@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+header {
+    background-color: red;
+    width: 100vw;
+    position: fixed;
+}
+
+nav {
+    padding: 20px;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h2 {
+    font-size: 30px;
+}
+
+nav ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    place-content: center;
+    gap: 85px;
+    list-style: none;
+    cursor: pointer;
+    font-size: 25px;
+}
+.popup {
+    position: relative;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.popup::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px; /* Adjust as needed */
+    height: 2px; /* Height of the underline */
+    background-color: currentColor; /* Matches the text color */
+    transition: transform 0.4s ease;
+    transform: scaleX(0);
+    transform-origin: bottom center;
+}
+
+.popup:hover::after {
+    transform: scaleX(1);
+    width: 90%;
+    transform-origin: bottom center;
+}
+.content{
+    position: fixed;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    display: none;
+}
+.homectn {
+    right: 550px;;
+}
+.skillctn{
+    right: 395px;;
+}
+.aboutctn{
+    right: 220px;
+}
+.contactctn{
+    right:50px;
+}
+.content ul{
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+    color: red;
+}
+@media screen and (max-width:767px) {
+    nav ul {
+        display: none;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        grid-template-columns: 1fr;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        border: 2px solid black;
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(1.6px);
+        -webkit-backdrop-filter: blur(1.6px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    nav span{
+        cursor: pointer;
+    }
+    #close {
+        display: none;
+        z-index: 50;
+    }
+    .popup:hover::after {
+        left: 40%;
+        width: 20%;
+    }
+    .content{
+        display: none;
+    }
+    /* .home{
+        color: yellow;
+    }
+    .skill{
+        color: blue;
+    }
+    .about{
+        color: green;
+    }
+    .contact{
+        color: aqua;
+    } */
+}
+
+@media screen and (min-width:767px) {
+    nav span{
+        display: none;
+    }
+    
+    nav {
+        padding: 40px;
+    }
+}
